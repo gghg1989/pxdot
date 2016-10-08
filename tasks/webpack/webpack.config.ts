@@ -21,6 +21,8 @@ const config = {
   output: {
     path: path.join(dir, 'assets'),
     filename: 'main.min.js',
+    libraryTarget: 'commonjs2',
+    target: 'node',
     publicPath: '/assets/'
   },
   module: {
@@ -41,6 +43,9 @@ const config = {
       'node_modules'
     ]
   },
+  externals: [
+    'electron'
+  ],
   resolveLoader: {
     root: path.join(dir, 'node_modules')
   },

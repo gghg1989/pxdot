@@ -29,7 +29,7 @@ app.get('*', (req, res) => {
 <html>
   <head>
     <meta charset="utf-8">
-    <title>PxDot</title>
+    <title>Px.</title>
     <link rel="stylesheet" href="/assets/main.min.css">
   </head>
   <body>
