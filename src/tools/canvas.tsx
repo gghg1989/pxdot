@@ -4,6 +4,10 @@ import { css, StyleSheet } from 'aphrodite';
 import { bindActionCreators } from 'redux';
 import { addCanvasDataURL } from '../store/actions';
 
+var canvasBuffer = require('electron-canvas-to-buffer')
+import { remote } from 'electron';
+import * as fs from 'fs';
+
 var clamp = (val, mn, mx) => Math.max(mn, Math.min(mx, val));
 
 /**
@@ -14,7 +18,8 @@ class Canvas extends React.Component<any, any> {
   public state = {
     zoom: 1,
     down: false,
-    brushSize: 1
+    brushSize: 1,
+    pos: { x: 0, y: 0 }
   }
 
   private canvas: HTMLCanvasElement;
@@ -69,6 +74,7 @@ class Canvas extends React.Component<any, any> {
 
   pointerDown = (e: PointerEvent) => {
     this.setState({ down: true });
+    this.pointerMove(e);
   }
 
   pointerUp = (e: PointerEvent) => {
@@ -81,11 +87,12 @@ class Canvas extends React.Component<any, any> {
         var bb = this.canvas.getBoundingClientRect();
 
         var pos = {
-          x: Math.floor((e.clientX - bb.left) / this.state.zoom),
-          y: Math.floor((e.clientY - bb.top) / this.state.zoom)
+          x: Math.floor(-0.5 + ((e.clientX - bb.left) / this.state.zoom)),
+          y: Math.floor(-0.5 + ((e.clientY - bb.top) / this.state.zoom))
         };
 
         this.ctx.fillRect(pos.x, pos.y, this.state.brushSize, this.state.brushSize);
+        this.setState({ pos })
       }
     }
   }
@@ -95,7 +102,29 @@ class Canvas extends React.Component<any, any> {
     switch (e.keyCode) {
       case 111:
         // Open file
-      break;
+        remote.dialog.showOpenDialog({ properties: ['openFile'], filters: [{ name: 'Images', extensions: ['jpg', 'png', 'gif'] }] }, (fileNames) => {
+          if (fileNames[0]) {
+            var bitmap = fs.readFileSync(fileNames[0]);
+            var img = new Buffer(bitmap).toString('base64');
+            var imgElm = new Image(64, 64);
+            imgElm.src = 'data:image/png;base64,' + img;
+            this.ctx.drawImage(imgElm, 0, 0);
+          }
+
+        });
+        break;
+      case 115:
+        // Save file
+        remote.dialog.showSaveDialog({ filters: [{ name: 'Images', extensions: ['jpg', 'png', 'gif'] }] }, (fileName) => {
+          console.log(fileName);
+          var buffer = canvasBuffer(this.canvas, 'image/png')
+
+          // write canvas to file
+          fs.writeFile(fileName, buffer, function (err) {
+            throw err
+          });
+        });
+        break;
       case 99:
         this.props.addCanvasDataURL(this.canvas.toDataURL('type/jpeg'));
         break;
@@ -105,13 +134,24 @@ class Canvas extends React.Component<any, any> {
       case 93:
         this.setState({ brushSize: clamp(this.state.brushSize + 1, 1, 8) });
         break;
+      case 105:
+      // @TODO - Color Picker
+        break;
     }
   }
 
   render() {
+    //var bb = {top: 0, left: 0};
+
+    // if (this.canvas)
+    //   bb = this.canvas.getBoundingClientRect();
+    //         <div style={{ border: '1px solid #888', width: this.state.zoom, height: this.state.zoom, position: 'fixed', left: bb.left + this.state.pos.x, top: bb.top + this.state.pos.y }} />
+
+
     return (
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%' }}>
         <canvas tabIndex={0} ref={r => this.canvas = r} className={css(styles.canvas)} style={{ transform: `scale(${this.state.zoom})`, border: `${1 / this.state.zoom}px solid #fff` }} />
+
       </div>
     );
   }

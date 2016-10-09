@@ -66,7 +66,8 @@ class Titlebar extends React.Component<any, any> {
           </div>
         </div>
         <div style={{ backgroundColor: '#404040', height: 24, display: 'flex', alignItems: 'center', boxSizing: 'border-box', padding: '0 8px' }}>
-          File
+          <a style={{paddingRight: 8}}>Open</a>
+          <a style={{paddingRight: 8}}>Save</a>
           </div>
       </div>
     );

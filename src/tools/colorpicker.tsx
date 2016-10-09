@@ -13,6 +13,12 @@ class ColorPicker extends React.Component<any, any> {
     gl: React.PropTypes.object
   }
 
+  public state = {
+    h: 0,
+    s: 0,
+    l: 0
+  }
+
   setColor = (param: string, pos: number) => {
 
     var c = onecolor(this.props.color);

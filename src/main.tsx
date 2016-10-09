@@ -14,7 +14,7 @@ const store = createStore(
   reducers,
   compose(
     applyMiddleware(thunk),
-    (typeof devToolsExtension !== 'undefined') ? devToolsExtension() : null
+    (typeof devToolsExtension !== 'undefined') ? devToolsExtension() : f => f
   )
 );
 
