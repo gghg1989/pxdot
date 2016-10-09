@@ -1,5 +1,4 @@
-[import { app, BrowserWindow } from 'electron';
-import installExtension, {REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS, REACT_PERF } from 'electron-devtools-installer';
+import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 
 const dir = path.join(__dirname, '..', '..');
@@ -32,6 +31,9 @@ function createWindow() {
 
   if (process.env.NODE_ENV === 'development') {
 
+    var installExtension = require('electron-devtools-installer')['default'];
+    var {REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS, REACT_PERF} = require('electron-devtools-installer');
+    
     BrowserWindow.addDevToolsExtension(path.join(dir, 'node_modules', 'devtron'));
 
     installExtension(REACT_DEVELOPER_TOOLS)

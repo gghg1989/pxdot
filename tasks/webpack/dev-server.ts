@@ -34,7 +34,7 @@ app.get('*', (req, res) => {
   </head>
   <body>
     <div id="app"></div>
-    <script src="/assets/main.min.js"></script>
+    <script src="/assets/hotreload.min.js"></script>
   </body>
 </html>
   `);

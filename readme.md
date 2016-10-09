@@ -6,8 +6,6 @@
 
 A pixel art app for game developers and artists. Speed up your development time with a strong toolset designed by the best pixel artists in the industry. Powered by Electron, React, Redux, Web Pointers, WebGL 2.
 
-### [Gallery](/docs/gallery/readme.md) | [Documentation](/docs/readme.md) | [Extension API](/docs/extensions/readme.md) | [Contributing](docs/contributing.md)
-
 ## Features
 
 - **Pallete Management** - Manage your palletes across sprites to maintain a consistant pallete for your entire game, with built in Pallete analysis tools and automatic color correction.

@@ -20,7 +20,7 @@ const config = {
   ],
   output: {
     path: path.join(dir, 'assets'),
-    filename: 'main.min.js',
+    filename: 'hotreload.min.js',
     libraryTarget: 'commonjs2',
     target: 'node',
     publicPath: '/assets/'
@@ -44,7 +44,8 @@ const config = {
     ]
   },
   externals: [
-    'electron'
+    'electron',
+    'clarifai'
   ],
   resolveLoader: {
     root: path.join(dir, 'node_modules')
@@ -64,6 +65,8 @@ const config = {
   ]
 };
 
+export default config;
+
 export const buildConfig = Object.assign({}, config, {
   entry: {
     main: './main',
@@ -78,22 +81,14 @@ export const buildConfig = Object.assign({}, config, {
   output: {
     path: path.join(dir, 'assets'),
     filename: '[name].min.js',
-    publicPath: '/assets/'
+    publicPath: '/assets/',
+    libraryTarget: 'commonjs2',
+    target: 'node',
   },
   plugins: [
     new ExtractTextPlugin('main.min.css'),
-    /*new WebpackSystemJSExportPlugin({
-      public: [
-        'react',
-        'react-dom',
-        'react-router'
-      ],
-      register: [
-      {
-        name: 'main',
-        alias: m => 'pxdot'
-      },
-    }),*/
+    new webpack.optimize.OccurenceOrderPlugin(false),
+    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: Infinity,
@@ -108,4 +103,3 @@ export const buildConfig = Object.assign({}, config, {
   ]
 });
 
-export default config;

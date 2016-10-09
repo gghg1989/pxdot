@@ -23,7 +23,7 @@ pids
 build/Release
 *.js
 *.map
-builds
+build
 
 !webpack.config.js
 !assets/main.min.js
