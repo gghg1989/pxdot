@@ -73,6 +73,8 @@ class Slider extends React.Component<any, any> {
   }
 
   changePosition = (e: React.MouseEvent<HTMLSpanElement>) => {
+    if (e.stopPropagation) e.stopPropagation();
+    if (e.preventDefault) e.preventDefault();
     var b = e.currentTarget.getBoundingClientRect();
     var x = e.clientX;
     var newPos = 1 - ((b.right - x) / 120);
@@ -86,7 +88,7 @@ class Slider extends React.Component<any, any> {
       <div style={{ width: '90%', paddingBottom: 8, marginLeft: '5%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'default' }}>
         <span>{this.props.letter}</span>
         <span style={{ position: 'relative' }}>
-          <span onClick={this.changePosition} style={{ display: 'inline-block', height: 4, width: 120, borderRadius: 1, background: `-webkit-gradient(linear,  left top,  right top, ${this.props.gradient})` }}></span>
+          <span onMouseDown={this.changePosition} onClick={this.changePosition} style={{ display: 'inline-block', height: 4, width: 120, borderRadius: 1, background: `-webkit-gradient(linear,  left top,  right top, ${this.props.gradient})` }}></span>
           <span style={{
             position: 'absolute',
             left: this.state.position * 120 - 2,

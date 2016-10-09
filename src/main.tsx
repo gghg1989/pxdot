@@ -20,7 +20,6 @@ const store = createStore(
 
 const target = document.getElementById('app');
 
-
 const node = (
   <Provider store={store}>
     <AppLayout />

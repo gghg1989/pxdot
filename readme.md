@@ -4,7 +4,7 @@
 
 ![Release][release-img] [![Dependency Status][david-img]][david-url] [![devDependency Status][david-dev-img]][david-dev-url]
 
-A pixel art app for game developers and artists. Speed up your development time with a strong toolset designed by the best pixel artists in the industry. Powered by Electron, React, Redux, Web Pointers, WebGL 2.
+A pixel art app for game developers and artists. Speed up your development time with a strong toolset designed by the best pixel artists in the industry. Powered by Electron, React, Redux, Web Pointers, Canvas, WebGL 2 (planned).
 
 ## Features
 

@@ -15,7 +15,8 @@ import ColorPicker from './tools/colorpicker';
 import Palette from './tools/palette';
 import Clarafai from './extensions/clarafai';
 
-const isElectron = true; //(typeof process !== 'undefined') ? (typeof process.versions['electron'] !== 'undefined') : false;
+//@TODO - Decouple Electron from core application.
+const isElectron = true;
 
 class AppLayout extends React.Component<any, any> {
   render() {

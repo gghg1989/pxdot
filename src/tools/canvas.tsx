@@ -4,7 +4,7 @@ import { css, StyleSheet } from 'aphrodite';
 import { bindActionCreators } from 'redux';
 import { addCanvasDataURL } from '../store/actions';
 
-var clamp = (val, mx, mn) => Math.max(mx, Math.min(mn, val));
+var clamp = (val, mn, mx) => Math.max(mn, Math.min(mx, val));
 
 /**
  * Colors are indexed when they're used on the canvas automatically.
@@ -81,11 +81,11 @@ class Canvas extends React.Component<any, any> {
         var bb = this.canvas.getBoundingClientRect();
 
         var pos = {
-          x: Math.round((e.clientX - bb.left) / this.state.zoom),
-          y: Math.round((e.clientY - bb.top) / this.state.zoom)
+          x: Math.floor((e.clientX - bb.left) / this.state.zoom),
+          y: Math.floor((e.clientY - bb.top) / this.state.zoom)
         };
 
-        this.ctx.fillRect(pos.x, pos.y, 1, 1);
+        this.ctx.fillRect(pos.x, pos.y, this.state.brushSize, this.state.brushSize);
       }
     }
   }
@@ -93,14 +93,17 @@ class Canvas extends React.Component<any, any> {
   keyPress = (e: KeyboardEvent) => {
     console.log(e);
     switch (e.keyCode) {
+      case 111:
+        // Open file
+      break;
       case 99:
         this.props.addCanvasDataURL(this.canvas.toDataURL('type/jpeg'));
         break;
-      case 219:
-        this.setState({ brushSize: clamp(this.state.brushSize--, 8, 1) });
+      case 91:
+        this.setState({ brushSize: clamp(this.state.brushSize - 1, 1, 8) });
         break;
-      case 221:
-        this.setState({ brushSize: clamp(this.state.brushSize++, 8, 1) });
+      case 93:
+        this.setState({ brushSize: clamp(this.state.brushSize + 1, 1, 8) });
         break;
     }
   }
@@ -119,7 +122,8 @@ const styles = StyleSheet.create({
     boxShadow: '0 8px 16px rgba(0,0,0,0.3)',
     imageRendering: 'pixelated',
     transition: 'transform 0.1s',
-    gridArea: 'canvas'
+    gridArea: 'canvas',
+    cursor: 'crosshair'
   }
 });
 
