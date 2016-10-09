@@ -14,7 +14,9 @@ class Pallete extends React.Component<any, any> {
 
   render() {
     return (
-      null
+      <div style={{ height: 64 }}>
+        <div style={{ display: 'flex', width: '100%', height: 16, background: '#494949', alignItems: 'center', padding: 8, boxSizing: 'border-box' }}>Pallete</div>
+      </div>
     );
   }
 }

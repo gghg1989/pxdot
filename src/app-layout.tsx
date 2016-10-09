@@ -1,5 +1,5 @@
 /**
- * This would be written by the program on save. 
+ * This would be dynamically generated based of the settings the user chose.
  * Describes the layout chosen by the application user.
  */
 
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   mainWindow: {
     display: 'flex',
     width: '100vw',
-    height: 'calc(100vh - 32px)',
+    height: 'calc(100vh - 56px)',
     flexDirection: 'row',
     justifyContent: 'space-between'
   }

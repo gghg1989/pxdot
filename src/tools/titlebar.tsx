@@ -6,7 +6,6 @@ const win = BrowserWindow.getFocusedWindow();
 
 const styles: any = {
   container: {
-    gridArea: 'titlebar',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -57,13 +56,18 @@ class Titlebar extends React.Component<any, any> {
 
   render() {
     return (
-      <div style={styles.container}>
-        <span>Px.</span>
-        <div style={styles.titleControls}>
-          <a onClick={this.minimize} style={styles.titleButton}><img src={`assets/misc/win-min.gif`} /></a>
-          <a onClick={this.maximize} style={styles.titleButton}><img src={`assets/misc/win-max.gif`} /></a>
-          <a onClick={this.close} style={styles.close}><img src={`assets/misc/win-x.gif`} /></a>
+      <div>
+        <div style={styles.container}>
+          <span>Px.</span>
+          <div style={styles.titleControls}>
+            <a onClick={this.minimize} style={styles.titleButton}><img src={`assets/misc/win-min.gif`} /></a>
+            <a onClick={this.maximize} style={styles.titleButton}><img src={`assets/misc/win-max.gif`} /></a>
+            <a onClick={this.close} style={styles.close}><img src={`assets/misc/win-x.gif`} /></a>
+          </div>
         </div>
+        <div style={{ backgroundColor: '#404040', height: 24, display: 'flex', alignItems: 'center', boxSizing: 'border-box', padding: '0 8px' }}>
+          File
+          </div>
       </div>
     );
   }

@@ -19,7 +19,16 @@ class ColorPicker extends React.Component<any, any> {
 
   render() {
     return (
-      <div style={{width: 32, height: '100%'}}/>
+      <div style={{ width: 32, height: '100%', backgroundColor: '#404040' }}>
+        <img src="assets/misc/pan.png" alt="pan" />
+        <img src="assets/misc/select.png" alt="select" />
+        <img src="assets/misc/poly-select.png" alt="poly select" />
+        <img src="assets/misc/magic-picker.png" alt="magic picker" />
+        <img src="assets/misc/eyedropper.png" alt="eyedropper" />
+        <img src="assets/misc/brush.png" alt="poly select" />
+        <img src="assets/misc/eraser.png" alt="magic picker" />
+        <img src="assets/misc/fill.png" alt="eyedropper" />
+      </div>
     );
   }
 }
