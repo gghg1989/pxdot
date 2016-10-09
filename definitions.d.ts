@@ -13,3 +13,5 @@ declare module 'autoprefixer';
 declare module 'precss';
 declare module 'extract-text-webpack-plugin';
 declare module 'electron-devtools-installer';
+declare module 'clarifai';
+declare module 'onecolor';

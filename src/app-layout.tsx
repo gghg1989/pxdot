@@ -13,7 +13,7 @@ import Toolbar from './tools/toolbar';
 import Navigator from './tools/navigator';
 import ColorPicker from './tools/colorpicker';
 import Palette from './tools/palette';
-
+import Clarafai from './extensions/clarafai';
 
 const isElectron = true; //(typeof process !== 'undefined') ? (typeof process.versions['electron'] !== 'undefined') : false;
 
@@ -25,10 +25,11 @@ class AppLayout extends React.Component<any, any> {
         <div className={css(styles.mainWindow)}>
           <Toolbar/>
           <Canvas/>
-          <div style={{width: 240, height: '100%', background: '#333'}}>
+          <div style={{width: 240, height: '100%', background: '#404040'}}>
             <Navigator/>
             <ColorPicker/>
             <Palette/>
+            <Clarafai/>
           </div>
         </div>
       </div>

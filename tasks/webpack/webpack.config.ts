@@ -44,8 +44,7 @@ const config = {
     ]
   },
   externals: [
-    'electron',
-    'clarifai'
+    'electron'
   ],
   resolveLoader: {
     root: path.join(dir, 'node_modules')

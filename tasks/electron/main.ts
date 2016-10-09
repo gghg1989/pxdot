@@ -22,6 +22,7 @@ function createWindow() {
     width: 1440,
     height: 800,
     frame: false,
+    
     webPreferences: {
       experimentalFeatures: true
     }

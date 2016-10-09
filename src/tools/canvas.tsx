@@ -1,7 +1,10 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { css, StyleSheet } from 'aphrodite';
+import { bindActionCreators } from 'redux';
+import { addCanvasDataURL } from '../store/actions';
 
-var clamp = (a, b, c) => Math.max(b, Math.min(c, a));
+var clamp = (val, mx, mn) => Math.max(mx, Math.min(mn, val));
 
 /**
  * Colors are indexed when they're used on the canvas automatically.
@@ -9,29 +12,52 @@ var clamp = (a, b, c) => Math.max(b, Math.min(c, a));
 class Canvas extends React.Component<any, any> {
 
   public state = {
-    zoom: 1
+    zoom: 1,
+    down: false,
+    brushSize: 1
   }
 
   private canvas: HTMLCanvasElement;
-  private scrollListener;
+  private ctx: CanvasRenderingContext2D;
+
+  private wheelListener;
   private pointerDownListener;
+  private pointerUpListener;
   private pointerMoveListener;
-  private gl: WebGLRenderingContext;
+  private onKeyPressListener;
+
 
   componentDidMount() {
-    
+
     // Add Event Listeners
-    this.scrollListener = this.canvas.addEventListener('wheel', this.zoom);
+    this.wheelListener = this.canvas.addEventListener('wheel', this.zoom);
     this.pointerMoveListener = this.canvas.addEventListener('pointermove', this.pointerMove);
     this.pointerDownListener = this.canvas.addEventListener('pointerdown', this.pointerDown);
+    this.pointerDownListener = this.canvas.addEventListener('pointerup', this.pointerUp);
+    this.onKeyPressListener = this.canvas.addEventListener('keypress', this.keyPress);
 
-    this.gl = this.canvas.getContext('webgl');
+    this.ctx = this.canvas.getContext('2d');
     this.canvas.width = 64;
     this.canvas.height = 64;
+    this.ctx.fillStyle = '#fff';
+    this.ctx.fillRect(0, 0, 64, 64);
+    this.ctx.fillStyle = '#000';
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (this.ctx) {
+      this.ctx.fillStyle = newProps['color'] ? newProps.color : this.ctx.fillStyle;
+    }
   }
 
   comonentDidUnmount() {
-    this.canvas.removeEventListener('scroll', this.scrollListener)
+
+    this.canvas.removeEventListener('wheel', this.wheelListener);
+    this.canvas.removeEventListener('pointermove', this.pointerMoveListener);
+    this.canvas.removeEventListener('pointerdown', this.pointerDownListener);
+    this.canvas.removeEventListener('pointerup', this.pointerUpListener);
+    this.canvas.removeEventListener('keypress', this.onKeyPressListener);
+
   }
 
   zoom = (e) => {
@@ -41,18 +67,48 @@ class Canvas extends React.Component<any, any> {
     this.setState({ zoom: targetZoom });
   }
 
-  pointerDown = (e) => {
-    console.log(e);
+  pointerDown = (e: PointerEvent) => {
+    this.setState({ down: true });
+  }
+
+  pointerUp = (e: PointerEvent) => {
+    this.setState({ down: false });
   }
 
   pointerMove = (e) => {
+    if (this.ctx) {
+      if (this.state.down) {
+        var bb = this.canvas.getBoundingClientRect();
+
+        var pos = {
+          x: Math.round((e.clientX - bb.left) / this.state.zoom),
+          y: Math.round((e.clientY - bb.top) / this.state.zoom)
+        };
+
+        this.ctx.fillRect(pos.x, pos.y, 1, 1);
+      }
+    }
+  }
+
+  keyPress = (e: KeyboardEvent) => {
     console.log(e);
+    switch (e.keyCode) {
+      case 99:
+        this.props.addCanvasDataURL(this.canvas.toDataURL('type/jpeg'));
+        break;
+      case 219:
+        this.setState({ brushSize: clamp(this.state.brushSize--, 8, 1) });
+        break;
+      case 221:
+        this.setState({ brushSize: clamp(this.state.brushSize++, 8, 1) });
+        break;
+    }
   }
 
   render() {
     return (
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%' }}>
-        <canvas ref={r => this.canvas = r} className={css(styles.canvas)} style={{ transform: `scale(${this.state.zoom})` , border: `${1/this.state.zoom}px solid #fff` }} />
+        <canvas tabIndex={0} ref={r => this.canvas = r} className={css(styles.canvas)} style={{ transform: `scale(${this.state.zoom})`, border: `${1 / this.state.zoom}px solid #fff` }} />
       </div>
     );
   }
@@ -62,11 +118,16 @@ const styles = StyleSheet.create({
   canvas: {
     boxShadow: '0 8px 16px rgba(0,0,0,0.3)',
     imageRendering: 'pixelated',
-    transition: 'transform 0.3s',
+    transition: 'transform 0.1s',
     gridArea: 'canvas'
   }
 });
 
 
-
-export default Canvas;
+export default connect(
+  state => ({
+    color: state.color
+  }),
+  dispatch => ({
+    addCanvasDataURL: bindActionCreators(addCanvasDataURL, dispatch)
+  }))(Canvas);
