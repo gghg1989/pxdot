@@ -2,7 +2,7 @@
   "name": "pxdot",
   "version": "0.1.0",
   "description": "💠 An extentable pixel art app for game developers and artists.",
-  "main": "tasks/electron/main.js",
+  "main": "./tasks/electron/main.js",
   "scripts": {
     "electron:darwin": "cross-env PLATFORM_TARGET=darwin ts-node tasks/electron/package.ts -F",
     "electron:linux": "cross-env PLATFORM_TARGET=linux ts-node tasks/electron/package.ts -F",
@@ -32,6 +32,7 @@
   },
   "homepage": "https://pxdot.com",
   "devDependencies": {
+    "@types/aphrodite": "^0.5.4",
     "@types/electron": "^1.4.24",
     "@types/electron-packager": "^5.1.29",
     "@types/express": "^4.0.33",
@@ -66,6 +67,8 @@
     "webpack-systemjs-export-plugin": "git+https://github.com/alaingalvan/webpack-systemjs-export-plugin.git"
   },
   "dependencies": {
+    "aphrodite": "^0.5.0",
+    "clarifai": "^2.0.9",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",

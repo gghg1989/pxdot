@@ -1,10 +1,10 @@
-import { app, BrowserWindow } from 'electron';
+[import { app, BrowserWindow } from 'electron';
 import installExtension, {REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS, REACT_PERF } from 'electron-devtools-installer';
 import * as path from 'path';
 
 const dir = path.join(__dirname, '..', '..');
 
-let mainWindow;
+let mainWindow: Electron.BrowserWindow;
 let config = {
   devtron: false,
   url: `file://${dir}/index.html`,
@@ -22,7 +22,10 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1440,
     height: 800,
-    frame: false
+    frame: false,
+    webPreferences: {
+      experimentalFeatures: true
+    }
   })
 
   mainWindow.loadURL(config.url)
