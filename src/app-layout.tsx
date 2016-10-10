@@ -41,8 +41,9 @@ class AppLayout extends React.Component<any, any> {
 const styles = StyleSheet.create({
   mainWindow: {
     display: 'flex',
-    width: '100vw',
+    width: 'calc(100vw - 4px)',
     height: 'calc(100vh - 56px)',
+    padding: '2px 2px <2px></2px> 0',
     flexDirection: 'row',
     justifyContent: 'space-between'
   }

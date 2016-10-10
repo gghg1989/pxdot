@@ -68,7 +68,7 @@
     "webpack-systemjs-export-plugin": "git+https://github.com/alaingalvan/webpack-systemjs-export-plugin.git"
   },
   "dependencies": {
-    "aphrodite": "^0.5.0",
+    "aphrodite": "^0.6.0",
     "clarifai": "^2.0.9",
     "onecolor": "^3.0.4",
     "react": "^15.3.2",

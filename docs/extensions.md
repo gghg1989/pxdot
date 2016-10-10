@@ -1,12 +1,12 @@
 # Extensions
 
-Extensions are loaded on startup from `./PxDot/extensions/` based on the ordering of a `config.json` file in that directory. Just create a folder there along with a package.json that points to your main file, and you're set.
+Extensions are loaded on startup from `./PxDot/extensions/` based on the ordering of a `config.js` file in that directory. Just create a folder there along with a package.json that points to your main file, and you're set.
 
 ## Example
 
 From your module, you can access other modules in the application.
 
-Behind the scenes PxDot is using SystemJS to dynamically load these modules.
+Behind the scenes PxDot is using SystemJS to dynamically load these modules, since it's a working implementation of the ECMAScript Modules and Loader Specification.
 
 ## Creating Views
 
