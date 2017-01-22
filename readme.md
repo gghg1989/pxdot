@@ -26,7 +26,7 @@ A cool pixel art app for game developers and artists.
 - **Extensions** - Add more features with the extension api, make a custom brush script, generate some art procedurally, you name it! Our API features Type Definitions for your JavaScript or TypeScript code for autocomplete & code linting.
 
 [website-img]: docs/gallery/screenshot.png
-[website-url]: https://pxdot.com
+[website-url]: http://pxdot.com
 [release-img]: https://img.shields.io/badge/release-0.1.0-4dbfcc.svg?style=flat-square
 [license-img]: http://img.shields.io/:license-mit-blue.svg?style=flat-square
 [license-url]: https://opensource.org/licenses/MIT
