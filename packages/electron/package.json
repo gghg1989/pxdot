@@ -1,7 +1,7 @@
 {
-  "name": "pxdot",
+  "name": "pxdot-dom",
   "version": "0.1.0",
-  "description": "🔲 A pixel art app for game developers and artists.",
+  "description": "Bootstraps the react application for Electron to load.",
   "main": "./tasks/electron/main.js",
   "scripts": {
     "electron:darwin": "cross-env PLATFORM_TARGET=darwin  ts-node tasks/electron/package.ts -F",
