@@ -22,14 +22,14 @@ var config = {
       {
         test: /\.tsx?$/,
         loader: 'ts-loader',
-        options: {transpileOnly: true, compilerOptions: {module: 'es2015'}}
+        options: { transpileOnly: true, compilerOptions: { module: 'es2015' } }
       },
       {
         test: /\.s?css$/,
         loader: ExtractTextPlugin.extract({
           fallbackLoader: 'style-loader',
           loader: [
-            {loader: 'css-loader', options: {modules: true}},
+            { loader: 'css-loader', options: { modules: true } },
             {
               loader: 'postcss-loader',
               options: {
@@ -59,7 +59,7 @@ if (isProduction) {
       ,
       new webpack.optimize.UglifyJsPlugin(),
       new webpack.DefinePlugin({
-        'process.env': {NODE_ENV: JSON.stringify('production')}
+        'process.env': { NODE_ENV: JSON.stringify('production') }
       })
     ]
   };
@@ -70,7 +70,7 @@ if (isProduction) {
  */
 const compiler = webpack(config);
 
-if (!argv.reduce((prev, cur) => prev || cur === '--watch', false)) {
+if (!process.argv.reduce((prev, cur) => prev || cur === '--watch', false)) {
   compiler.run((err, stats) => {
     if (err)
       return console.error(err);

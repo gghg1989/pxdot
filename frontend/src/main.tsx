@@ -1,29 +1,52 @@
+/**
+ * This would be dynamically generated based of the settings the user chose.
+ * Describes the layout chosen by the application user.
+ */
+
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { createStore, applyMiddleware, compose } from 'redux';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
+import { css, StyleSheet } from 'aphrodite';
 
-import reducers from './store/reducers';
-import AppLayout from './app-layout';
-import './css';
+import TitleBar from './tools/titlebar';
+import Canvas from './tools/canvas';
 
-declare var devToolsExtension;
+import Toolbar from './tools/toolbar';
+import Navigator from './tools/navigator';
+import ColorPicker from './tools/colorpicker';
+import Palette from './tools/palette';
+import Clarafai from './extensions/clarafai';
 
-const store = createStore(
-  reducers,
-  compose(
-    applyMiddleware(thunk),
-    (typeof devToolsExtension !== 'undefined') ? devToolsExtension() : f => f
-  )
-);
+//@TODO - Decouple Electron from core application.
+const isElectron = true;
 
-const target = document.getElementById('app');
+class AppLayout extends React.Component<any, any> {
+  render() {
+    return (
+      <div>
+        {isElectron ? <TitleBar /> : null}
+        <div className={css(styles.mainWindow)}>
+          <Toolbar/>
+          <Canvas/>
+          <div style={{width: 240, height: '100%', background: '#404040'}}>
+            <Navigator/>
+            <ColorPicker/>
+            <Palette/>
+            <Clarafai/>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
 
-const node = (
-  <Provider store={store}>
-    <AppLayout />
-  </Provider>
-);
+const styles = StyleSheet.create({
+  mainWindow: {
+    display: 'flex',
+    width: 'calc(100vw - 4px)',
+    height: 'calc(100vh - 56px)',
+    padding: '2px 2px <2px></2px> 0',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  }
+});
 
-ReactDOM.render(node, target);
+export default AppLayout;

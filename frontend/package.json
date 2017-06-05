@@ -1,0 +1,47 @@
+{
+  "name": "Px",
+  "version": "0.1.0",
+  "description": "🔲 A pixel art app for game developers and artists.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alaingalvan/pxdot.git"
+  },
+  "keywords": [
+    "pixel",
+    "art",
+    "editor",
+    "webgl"
+  ],
+  "devDependencies": {
+    "@types/aphrodite": "^0.5.5",
+    "@types/node": "^7.0.27",
+    "@types/react": "^15.0.26",
+    "@types/react-dom": "^15.5.0",
+    "@types/react-redux": "^4.4.41",
+    "@types/react-router": "^4.0.11",
+    "@types/redux-thunk": "^2.1.0",
+    "@types/webpack": "^2.2.15",
+    "autoprefixer": "^7.1.1",
+    "cross-env": "^5.0.0",
+    "css-loader": "^0.28.4",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "postcss-loader": "^2.0.5",
+    "precss": "^1.4.0",
+    "style-loader": "^0.18.1",
+    "ts-loader": "^2.1.0",
+    "ts-node": "^3.0.4",
+    "typescript": "2.2.1",
+    "webpack": "^2.6.1"
+  },
+  "dependencies": {
+    "aphrodite": "^1.2.1",
+    "clarifai": "^2.1.8",
+    "onecolor": "^3.0.4",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.5",
+    "react-router": "^4.1.1",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0"
+  }
+}
