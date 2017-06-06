@@ -1,0 +1,18 @@
+{
+  "name": "pxdot-monorepo",
+  "version": "0.1.0",
+  "description": "🔲 A pixel art app for game developers and artists.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alaingalvan/pxdot.git"
+  },
+  "keywords": [
+    "pixel",
+    "art",
+    "editor",
+    "webgl"
+  ],
+  "dependencies": {
+    "lerna": "^2.0.0-rc.5"
+  }
+}

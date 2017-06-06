@@ -13,7 +13,7 @@ A cool pixel art app for game developers and artists.
 
 ## Planned Features
 
-- **Pallete Management** - Manage your palletes across sprites to maintain a consistant pallete for your entire game, with built in Pallete analysis tools and automatic color correction.
+- **Palette Management** - Manage your palettes across sprites to maintain a consistent palette for your entire game, with built in Palette analysis tools and automatic color correction.
 
 - **Dithering Brushes** - Take advantage of dithering research normally reserved for gifs to make your pixel art amazing.
 
@@ -21,7 +21,7 @@ A cool pixel art app for game developers and artists.
 
 - **Animations** - build your animations with onion skinning, bones, or a mix of both! Load bone animations from blender and render them out as pixel art!
 
-- **Command Pallete** - Similar to most text editors, you can type away commands to get things done faster.
+- **Command Palette** - Similar to most text editors, you can type away commands to get things done faster.
 
 - **Extensions** - Add more features with the extension api, make a custom brush script, generate some art procedurally, you name it! Our API features Type Definitions for your JavaScript or TypeScript code for autocomplete & code linting.
 
