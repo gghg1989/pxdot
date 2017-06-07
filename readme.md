@@ -31,7 +31,7 @@ A cool pixel art app for game developers and artists.
 [license-img]: http://img.shields.io/:license-mit-blue.svg?style=flat-square
 [license-url]: https://opensource.org/licenses/MIT
 [david-url]: https://david-dm.org/hyperfuse/pxdot?path=packages/pxdot
-[david-img]: https://david-dm.org/hyperfuse/pxdot.svg?style=flat-square?&path=packages/pxdot
+[david-img]: https://david-dm.org/hyperfuse/pxdot.svg?style=flat-square&path=packages/pxdot
 [david-dev-url]: https://david-dm.org/hyperfuse/pxdot#info=devDependencies?path=packages/pxdot
 [david-dev-img]: https://david-dm.org/hyperfuse/pxdot/dev-status.svg?style=flat-square&path=packages/pxdot
 [travis-img]: https://img.shields.io/travis/hyperfuse/pxdot.svg?style=flat-square
