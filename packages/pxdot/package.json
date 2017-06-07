@@ -5,11 +5,12 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production ts-node -F -D webpack.config.ts",
     "develop": "cross-env NODE_ENV=development ts-node -F -D webpack.config.ts --watch",
-    "test": "tsc"
+    "test": "jest --coverage",
+    "coverage": "nyc npm test && nyc report --reporter=lcov && codecov"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alaingalvan/pxdot.git"
+    "url": "git+https://github.com/hyperfuse/pxdot.git"
   },
   "keywords": [
     "pixel",
@@ -18,18 +19,21 @@
     "webgl"
   ],
   "devDependencies": {
+    "@types/jest": "^19.2.4",
     "@types/aphrodite": "^0.5.5",
     "@types/node": "^7.0.27",
-    "@types/react": "^15.0.26",
     "@types/react-dom": "^15.5.0",
     "@types/react-redux": "^4.4.41",
     "@types/react-router": "^4.0.11",
+    "@types/react": "^15.0.26",
     "@types/redux-thunk": "^2.1.0",
     "@types/webpack": "^2.2.15",
     "autoprefixer": "^7.1.1",
     "cross-env": "^5.0.0",
     "css-loader": "^0.28.4",
     "extract-text-webpack-plugin": "^2.1.0",
+    "jest": "^20.0.4",
+    "nyc": "^11.0.2",
     "postcss-loader": "^2.0.5",
     "precss": "^1.4.0",
     "style-loader": "^0.18.1",
@@ -39,16 +43,14 @@
     "webpack": "^2.6.1"
   },
   "dependencies": {
-    "@types/jest": "^19.2.4",
     "aphrodite": "^1.2.1",
     "clarifai": "^2.1.8",
-    "jest": "^20.0.4",
     "onecolor": "^3.0.4",
-    "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
-    "redux": "^3.6.0",
-    "redux-thunk": "^2.2.0"
+    "react": "^15.5.4",
+    "redux-thunk": "^2.2.0",
+    "redux": "^3.6.0"
   }
 }

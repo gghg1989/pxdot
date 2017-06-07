@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alaingalvan/pxdot.git"
+    "url": "git+https://github.com/hyperfuse/pxdot.git"
   },
   "keywords": [
     "pixel",
@@ -32,15 +32,15 @@
   },
   "homepage": "https://pxdot.com",
   "dependencies": {
-    "@types/electron": "^1.4.24",
+    "@types/electron": "^1.4.38",
     "@types/electron-packager": "^5.1.29",
-    "cross-env": "^3.1.4",
+    "cross-env": "^5.0.0",
     "devtron": "^1.4.0",
-    "electron": "^1.4.14",
-    "electron-devtools-installer": "^2.0.1",
-    "electron-packager": "^8.5.0",
-    "electron-rebuild": "^1.5.7",
-    "ts-node": "^2.0.0",
-    "typescript": "^2.1.5"
+    "electron": "^1.6.10",
+    "electron-devtools-installer": "^2.2.0",
+    "electron-packager": "^8.7.1",
+    "electron-rebuild": "^1.5.11",
+    "ts-node": "^3.0.6",
+    "typescript": "^2.2.1"
   }
 }
