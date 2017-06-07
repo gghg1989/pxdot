@@ -14,26 +14,37 @@ var config = {
   output: {
     path: path.join(__dirname, 'assets'),
     libraryTarget: 'commonjs2',
-    target: 'node',
     publicPath: '/assets/'
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
+    modules: [
+      path.resolve(__dirname, 'src'),
+      'node_modules'
+    ]
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
         loader: 'ts-loader',
-        options: { transpileOnly: true, compilerOptions: { module: 'es2015' } }
+        options: {
+          transpileOnly: true,
+          compilerOptions: {
+            module: 'es2015'
+          }
+        }
       },
       {
         test: /\.s?css$/,
         loader: ExtractTextPlugin.extract({
-          fallbackLoader: 'style-loader',
-          loader: [
+          fallback: 'style-loader',
+          use: [
             { loader: 'css-loader', options: { modules: true } },
             {
               loader: 'postcss-loader',
               options: {
-                // Doesn't work, postcss forces you to use a config file! >:(
+                ident: 'postcss',
                 plugins: () => [precss(), autoprefixer()]
               }
             }
@@ -42,12 +53,15 @@ var config = {
       }
     ]
   },
-  resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.scss'],
-    modules: [path.resolve('./src'), 'node_modules']
-  },
   externals: ['electron', 'fs'],
-  plugins: [new ExtractTextPlugin('main.min.css')]
+  plugins: [
+    new ExtractTextPlugin('main.min.css'),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: Infinity,
+      filename: 'vendor.min.js'
+    })
+  ]
 };
 
 if (isProduction) {
@@ -56,15 +70,15 @@ if (isProduction) {
     ...config,
     plugins: [
       ...config.plugins,
-      ,
-      new webpack.optimize.UglifyJsPlugin(),
+      new webpack.optimize.UglifyJsPlugin({
+      }),
       new webpack.DefinePlugin({
-        'process.env': { NODE_ENV: JSON.stringify('production') }
-      })
-    ]
+        'process.env': {
+          'NODE_ENV': JSON.stringify('production')
+        }
+      })]
   };
 }
-
 /**
  * Start Build
  */

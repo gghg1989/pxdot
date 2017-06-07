@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-
 /*
 An unserializable set of frame buffer objects
 */

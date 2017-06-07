@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import * as onecolor from 'onecolor';
 import { colorSet } from '../store/actions';
 
-
 /**
  * Colors are indexed when they're used on the canvas automatically.
  */
@@ -55,7 +54,10 @@ class ColorPicker extends React.Component<any, any> {
   }
 }
 
-export default connect(state => ({ color: state.color }), dispatch => ({ colorSet: bindActionCreators(colorSet, dispatch) }))(ColorPicker);
+export default connect(
+  state => ({ color: state.color }),
+  dispatch => ({ colorSet: bindActionCreators(colorSet, dispatch) }))
+  (ColorPicker);
 
 class Slider extends React.Component<any, any> {
 

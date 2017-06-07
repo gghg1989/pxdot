@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-
 /**
  * Colors are indexed when they're used on the canvas automatically.
  */

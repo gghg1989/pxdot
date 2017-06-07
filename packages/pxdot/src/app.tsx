@@ -15,22 +15,19 @@ import ColorPicker from './tools/colorpicker';
 import Palette from './tools/palette';
 import Clarafai from './extensions/clarafai';
 
-//@TODO - Decouple Electron from core application.
-const isElectron = true;
-
 class AppLayout extends React.Component<any, any> {
   render() {
     return (
       <div>
-        {isElectron ? <TitleBar /> : null}
+        <TitleBar />
         <div className={css(styles.mainWindow)}>
-          <Toolbar/>
-          <Canvas/>
-          <div style={{width: 240, height: '100%', background: '#404040'}}>
-            <Navigator/>
-            <ColorPicker/>
-            <Palette/>
-            <Clarafai/>
+          <Toolbar />
+          <Canvas />
+          <div style={{ width: 240, height: '100%', background: '#404040' }}>
+            <Navigator />
+            <ColorPicker />
+            <Palette />
+            <Clarafai />
           </div>
         </div>
       </div>
@@ -38,14 +35,25 @@ class AppLayout extends React.Component<any, any> {
   }
 }
 
+const font = {
+  fontFamily: "PxScript",
+  fontStyle: "normal",
+  fontWeight: "normal",
+  src: "url('assets/fonts/pxscript.ttf') format('truetype')"
+};
+
 const styles = StyleSheet.create({
   mainWindow: {
+    fontFamily: [font, "sans-serif"],
+    fontSize: 12,
     display: 'flex',
     width: 'calc(100vw - 4px)',
     height: 'calc(100vh - 56px)',
     padding: '2px 2px <2px></2px> 0',
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    fontSmooth: 'never',
+    WebkitFontSmoothing: 'none'
   }
 });
 
