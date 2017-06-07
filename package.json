@@ -2,6 +2,11 @@
   "name": "pxdot-monorepo",
   "version": "0.1.0",
   "description": "🔲 A pixel art app for game developers and artists.",
+  "scripts": {
+    "start": "yarn || npm i",
+    "postinstall": "lerna bootstrap --npm-client=yarn",
+    "test": "lerna run test"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alaingalvan/pxdot.git"

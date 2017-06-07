@@ -2,6 +2,11 @@
   "name": "pxdot",
   "version": "0.1.0",
   "description": "🔲 A pixel art app for game developers and artists.",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production ts-node -F -D webpack.config.ts",
+    "develop": "cross-env NODE_ENV=development ts-node -F -D webpack.config.ts --watch",
+    "test": "tsc"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alaingalvan/pxdot.git"
@@ -34,8 +39,10 @@
     "webpack": "^2.6.1"
   },
   "dependencies": {
+    "@types/jest": "^19.2.4",
     "aphrodite": "^1.2.1",
     "clarifai": "^2.1.8",
+    "jest": "^20.0.4",
     "onecolor": "^3.0.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",

@@ -10,7 +10,7 @@ let isProduction = env && env.match(/production/);
 var config = {
   context: path.join(__dirname, 'src'),
   devtool: 'eval',
-  entry: ['./main'],
+  entry: ['./dom'],
   output: {
     path: path.join(__dirname, 'assets'),
     libraryTarget: 'commonjs2',

@@ -15,7 +15,7 @@ A cool pixel art app for game developers and artists.
 
 - **Palette Management** - Manage your palettes across sprites to maintain a consistent palette for your entire game, with built in Palette analysis tools and automatic color correction.
 
-- **Dithering Brushes** - Take advantage of dithering research normally reserved for gifs to make your pixel art amazing.
+- **Dithering Brushes** - Take advantage of dithering research normally reserved for `.gif`'s to make your pixel art amazing.
 
 - **Smart Deformations** - Transform your sprites without worrying about losing fidelity, rotate, scale, and skew to your heart's content.
 
@@ -30,10 +30,10 @@ A cool pixel art app for game developers and artists.
 [release-img]: https://img.shields.io/badge/release-0.1.0-4dbfcc.svg?style=flat-square
 [license-img]: http://img.shields.io/:license-mit-blue.svg?style=flat-square
 [license-url]: https://opensource.org/licenses/MIT
-[david-url]: https://david-dm.org/hyperfuse/px
-[david-img]: https://david-dm.org/hyperfuse/px.svg?style=flat-square
-[david-dev-url]: https://david-dm.org/hyperfuse/px#info=devDependencies
-[david-dev-img]: https://david-dm.org/hyperfuse/px/dev-status.svg?style=flat-square
+[david-url]: https://david-dm.org/hyperfuse/px&path=packages/pxdot
+[david-img]: https://david-dm.org/hyperfuse/px.svg?style=flat-square&path=packages/pxdot
+[david-dev-url]: https://david-dm.org/hyperfuse/px#info=devDependencies&path=packages/pxdot
+[david-dev-img]: https://david-dm.org/hyperfuse/px/dev-status.svg?style=flat-square&path=packages/pxdot
 [travis-img]: https://img.shields.io/travis/hyperfuse/px.svg?style=flat-square
 [travis-url]:https://travis-ci.org/hyperfuse/px
 [codecov-img]:https://img.shields.io/codecov/c/github/hyperfuse/px.svg?style=flat-square
