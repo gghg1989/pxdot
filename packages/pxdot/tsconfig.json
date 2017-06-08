@@ -19,7 +19,8 @@
     "noEmitHelpers": false,
     "sourceMap": true,
     "strictNullChecks": false,
-    "jsx": "react"
+    "jsx": "react",
+    "outDir": "dist"
   },
   "compileOnSave": false,
   "buildOnSave": false
